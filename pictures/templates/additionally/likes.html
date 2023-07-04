@@ -1,0 +1,24 @@
+{% load static %}
+{% block content %}
+{% if request.user.is_authenticated %}
+
+    <div>
+        <form action="{% url 'pictures:add_like' picture.id %}" method="post">
+            {% csrf_token %}
+            {% if liked %}
+
+        <button  type="submit" style="outline: none; border:0px; background: transparent"><img src="{% static 'images/face-smile-solid.svg' %}"
+                                    alt="" width="70" height="100"></button>
+
+        {% else %}
+        <button  type="submit" style="outline: none; border:0px; background: transparent"><img src="{% static 'images/face-smile-solid.svg' %}"
+                                    alt="" width="70" height="100"></button>
+       {% endif %}
+            {{ picture.total_likes }}
+
+        </form>
+    </div>
+{% endif %}
+
+
+{% endblock  %}

@@ -1,0 +1,24 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/picture.css' %}">
+<link rel="icon" href="{% static 'favicon.ico' %}">
+
+{% for pict in pictures %}
+<div>
+<div>
+ <div>
+  <p style="line-height: 130%"><b> Название картины: </b></p>
+  <p style="top:13px"><a href="{{pict.slug}}">{{ pict.name }}</a></p><br>
+<i style="line-height: 130%"> Дата публикации: {{ pict.created }}</i><br>
+ <p> Категории: {{ pict.category }}</p><br>
+  </div>
+ <div>
+<img src="{{ pict.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+  </div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}

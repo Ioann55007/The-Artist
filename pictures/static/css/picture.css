@@ -1,0 +1,19 @@
+div
+{ float: left;
+line-height: 20px;
+font-size: 40px;
+
+background: blue;
+color: black;
+margin-top: 20px;
+width: 320px;
+margin-right: 10px; text-align: center;
+font-size: 22px;
+  }
+
+
+.button {
+  outline: none;
+  border: 0;
+  background: transparent;
+}

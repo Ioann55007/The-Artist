@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block content %}
+{{picture.name}}<br>
+{{picture.created}}<br>
+{{ picture.category }}<br>
+{{ picture.description }}<br>
+<div>
+    <img src="{{ picture.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+</div>
+{% include 'additionally/likes.html' %}
+<div>
+    {% if user.is_active %}
+
+    <hr>
+<h3>Отзывы</h3>
+    {% for review in picture.picture_review.all %}
+            Пользователь - {{ review.author }}<br>
+            Контент - {{ review.content }} <br>
+            Добавлен - {{ review.created }}<br>
+    <small><a href="{% url 'pictures:delete-review' review.id %}" style="color:red">Удалить</a></small><br>
+
+    {% endfor %}
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="border:solid 2px
+                                             blue;background-color:blue;color:white;">Отправить
+        </button>
+
+
+
+    </form>
+
+    {% else %}
+    <hr>
+<h3>Отзывы</h3>
+
+    <h4>Что бы оставить и просмотреть комментарии авторизуйтесь</h4>
+    {% endif %}
+</div>
+
+
+{% endblock %}
+</body>
+</html>

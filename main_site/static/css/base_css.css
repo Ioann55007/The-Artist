@@ -1,0 +1,218 @@
+.nazz{
+box-sizing: border-box;
+
+position: relative;
+width: 1450px;
+height: 112px;
+
+background: #E5E5E5;
+border: 1px solid rgba(0, 0, 0, 0.1);
+border-radius: 2px;
+
+}
+
+.first{
+position: absolute;
+width: 224px;
+height: 51px;
+left: 16px;
+top: 14px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
+
+
+.second{
+position: absolute;
+width: 132px;
+height: 55px;
+left: 274px;
+top: 16px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
+
+.three{
+
+position: absolute;
+width: 132px;
+height: 47px;
+left: 429px;
+top: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
+
+.four{
+position: absolute;
+width: 121px;
+height: 41px;
+left: 584px;
+top: 20px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
+
+.five{
+position: absolute;
+width: 185px;
+height: 52px;
+left: 739px;
+top: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
+
+.six{
+position: absolute;
+width: 96px;
+height: 49px;
+left: 947px;
+top: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+}
+
+
+
+.seven{
+position: absolute;
+width: 251px;
+height: 69px;
+left: 1043px;
+top: 18px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
+
+
+.frame{
+
+position: relative;
+width: 1450px;
+height: 254px;
+
+background: #242020;
+
+}
+
+
+.ssalc{
+
+position: absolute;
+width: 293px;
+height: 174px;
+left: 14px;
+top: 35px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #F9EA9B;
+
+}
+
+.mid{
+position: absolute;
+width: 443px;
+height: 61px;
+left: 470px;
+top: 33px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #BAC670;
+
+}
+
+
+.kert{
+
+position: absolute;
+width: 223px;
+height: 57px;
+left: 891px;
+top: 33px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #C8CF70;
+
+}
+
+.zass{
+position: absolute;
+width: 223px;
+height: 57px;
+left: 1204px;
+top: 35px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #C8CF70;
+
+}
+
