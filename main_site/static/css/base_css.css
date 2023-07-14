@@ -114,7 +114,22 @@ line-height: 29px;
 color: #000000;
 }
 
+.admin{
+position: absolute;
+width: 251px;
+height: 69px;
+left: 1300px;
+top: 18px;
 
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+color: #000000;
+
+}
 
 .seven{
 position: absolute;

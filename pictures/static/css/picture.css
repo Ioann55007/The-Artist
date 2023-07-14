@@ -2,14 +2,13 @@ div
 { float: left;
 line-height: 20px;
 font-size: 40px;
-
 background: blue;
 color: black;
 margin-top: 20px;
 width: 320px;
 margin-right: 10px; text-align: center;
 font-size: 22px;
-  }
+}
 
 
 .button {
@@ -17,3 +16,13 @@ font-size: 22px;
   border: 0;
   background: transparent;
 }
+
+
+.a img{
+	width:280px;
+	height:300px;
+	}
+.b img{
+	width:600px;
+	height: 710px;
+	}

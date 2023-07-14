@@ -11,10 +11,14 @@
 {% if user.is_authenticated %}
 <p class="five"><a href="{% url 'logout' %}">Выйти</a></p>
 <p class="five" style="left:870px"><a href="{% url 'profile' user.profile.pk %}">Профиль</a></p>
+     {% if user.is_staff %}
+        <p class="admin"><a href="admin/">Админ</a></p>
+    {% endif %}
 {% else %}
 <p class="five"><a href="{% url 'register' %}">Регистрация</a></p>
 <p class="six"><a href="{% url 'login' %}">Вход</a></p>
-{% endif %}
+
+    {% endif %}
 <p class="seven"><a href="{% url 'deliver' %}">Способ доставки</a></p>
 </section>
 </header>

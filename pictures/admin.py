@@ -1,6 +1,8 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-from .models import Viewer, Picture, Category, Review
+from . import models
+from . models import Viewer, Picture, Category, Review
 
 
 @admin.register(Viewer)
@@ -25,3 +27,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class ReviewAdmin(admin.ModelAdmin):
     list_display_links = ('author',)
     list_display = ('author', 'created', 'content', 'picture')
+
+
+
+
+
+

@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
 
 from .forms import ReviewForm
-from .models import Picture, Review
+from .models import Picture, Review, Viewer
 
 
 class ViewPicture(ListView):
@@ -17,7 +17,23 @@ class ViewPicture(ListView):
         return context
 
 
-class DetailPicture(FormMixin, DetailView):
+class CountViewerMixin:
+
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        if hasattr(self.object, 'views'):
+            viewer, created = Viewer.objects.get_or_create(
+                ipaddress=None if request.user.is_authenticated else get_client_ip(request, id),
+                user=request.user if request.user.is_authenticated else None
+            )
+
+            if self.object.views.filter(id=viewer.id).count() == 0:
+                self.object.views.add(viewer)
+
+        return response
+
+
+class DetailPicture(CountViewerMixin, FormMixin, DetailView):
     model = Picture
     template_name = 'pictures/picture_detail.html'
     form_class = ReviewForm
@@ -50,6 +66,15 @@ class DetailPicture(FormMixin, DetailView):
                                                                 })
 
 
+def get_client_ip(request, id):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
 def delete_review(request, id):
     review = Review.objects.get(id=id)
     if review.author == request.user:
@@ -67,5 +92,3 @@ def like(request, id):
         else:
             picture.likes.add(request.user.id)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-

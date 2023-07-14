@@ -1,29 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% block content %}
+
+{% load crispy_forms_tags %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-{% block content %}
 {{picture.name}}<br>
-{{picture.created}}<br>
+{{picture.created|date:"d-m-Y"}}<br>
 {{ picture.category }}<br>
+
 {{ picture.description }}<br>
-<div>
-    <img src="{{ picture.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+
+<div class="a">
+    <img onclick="On(this)" ondblclick="Off(this)" src="{{ picture.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+
 </div>
 {% include 'additionally/likes.html' %}
 <div>
     {% if user.is_active %}
 
+
+		<button id="show" class="btn btn-outline-primary btn-sm">Хотите заказать?</button>
+
+
+
+
+
+
+	<dialog id="profile_modal">
+	  	<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+			        <h4 class="modal-title">Хотите заказать?</h4>
+					<p></p>
+					<select>
+
+                        <option>Прежде чем заказать ознакомьтесь с условиями покупки</option>
+                        <option> Способ доставки - почта России и СДЭК</option>
+                        <option> Предоплата 100 %</option>
+                        <option>Форма оплаты - онлайн после связи</option>
+                        <option>Доставка в стоимость картины не входит</option>
+                    </select>
+					<p>Галина Максимовна</p>
+					<p>Телефон</p>
+					<p>79270877738</p>
+					<p>WhatsAp привязан к телефону.</p>
+
+		        </div>
+		        <div class="modal-body">
+			        <form method="post">
+			          	{% csrf_token %}
+			          	{{ user_form|crispy }}
+				 </div>
+		      	<div class="modal-footer">
+					</form>
+		        	<button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		        </div>
+		    </div>
+	  	</div>
+
+	</dialog>
     <hr>
 <h3>Отзывы</h3>
     {% for review in picture.picture_review.all %}
             Пользователь - {{ review.author }}<br>
             Контент - {{ review.content }} <br>
-            Добавлен - {{ review.created }}<br>
+            Добавлен - {{ review.created|date:"d-m-Y" }}<br>
     <small><a href="{% url 'pictures:delete-review' review.id %}" style="color:red">Удалить</a></small><br>
 
     {% endfor %}
@@ -48,7 +94,35 @@
     {% endif %}
 </div>
 
+<script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-shape="round"
+     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir">
 
+</div>
 {% endblock %}
 </body>
+
 </html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="{% static 'js/picture.js' %}"></script>
+<script>
+	(function() {
+            var dialog = document.getElementById('profile_modal');
+
+			document.getElementById('show').onclick = function() {
+                dialog.show();
+            };
+
+            document.getElementById('close').onclick = function() {
+                dialog.close();
+            };
+            document.getElementById('Clos').onclick = function() {
+                dialog.close();
+            };
+
+
+        })();
+
+
+</script>

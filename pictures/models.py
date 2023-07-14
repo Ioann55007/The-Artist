@@ -27,6 +27,8 @@ class Picture(models.Model):
         return self.likes.count()
 
 
+
+
 class Category(models.Model):
     name = models.CharField(max_length=150)
     created = models.DateTimeField(auto_now_add=True)

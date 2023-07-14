@@ -26,3 +26,15 @@ class Category(models.Model):
     name = models.CharField(max_length=150)
     created = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
+
+
+
+class Review(models.Model):
+    objects = models.Manager()
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_review')
+    picture = models.ForeignKey(Icons, on_delete=models.CASCADE, related_name='icon_review')
+    created = models.DateTimeField(auto_now_add=True)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.content

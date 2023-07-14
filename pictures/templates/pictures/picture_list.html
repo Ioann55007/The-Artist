@@ -9,8 +9,10 @@
 <div>
 <div>
  <div>
+  <p>Просмотры: {{ pict.views.count }}</p>
+
   <p style="line-height: 130%"><b> Название картины: </b></p>
-  <p style="top:13px"><a href="{{pict.slug}}">{{ pict.name }}</a></p><br>
+  <p style="top:13px"><a href="{{pict.slug}}" style="color:black">{{ pict.name }}</a></p><br>
 <i style="line-height: 130%"> Дата публикации: {{ pict.created }}</i><br>
  <p> Категории: {{ pict.category }}</p><br>
   </div>

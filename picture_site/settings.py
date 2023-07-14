@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'register_auth.apps.RegisterAuthConfig',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'crispy_forms',
+    'crispy_bootstrap4',
+
 ]
 
 MIDDLEWARE = [
@@ -205,5 +208,7 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_OBTAIN_SERIALIZER": "rest_framework_simplejwt.serializers.TokenObtainSlidingSerializer",
     "SLIDING_TOKEN_REFRESH_SERIALIZER": "rest_framework_simplejwt.serializers.TokenRefreshSlidingSerializer",
 }
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
