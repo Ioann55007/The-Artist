@@ -1,7 +1,8 @@
 {% load static %}
 
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+{% include 'header.html' %}
 <h1 style="text-align:center">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</h1>
 
 
@@ -161,9 +162,6 @@
 
 </p>
 
-
-
-
-
+{% include 'footer.html' %}
 
 {% endblock %}

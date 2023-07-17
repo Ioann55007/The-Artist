@@ -1,0 +1,26 @@
+{% extends 'header.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/picture.css' %}">
+<link rel="icon" href="{% static 'favicon.ico' %}">
+
+{% for icon in icons %}
+<div>
+<div>
+ <div>
+  <p>Просмотры: {{ icon.viewers.count }}</p>
+
+  <p style="line-height: 130%"><b> Название Иконы: </b></p>
+  <p style="top:13px"><a href="{{icon.slug}}" style="color:black">{{ icon.name }}</a></p><br>
+<i style="line-height: 130%"> Дата публикации: {{ icon.created }}</i><br>
+ <p> Категории: {{ icon.category }}</p><br>
+  </div>
+ <div>
+<img src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+  </div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}

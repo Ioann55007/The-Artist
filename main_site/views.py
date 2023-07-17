@@ -28,3 +28,8 @@ class Confiden(View):
 
 
 
+class TheRule(View):
+
+    @staticmethod
+    def get(request):
+        return render(request, template_name='rules_site.html')

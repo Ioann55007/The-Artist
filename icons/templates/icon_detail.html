@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-     <style>
+    <style>
 
 
 .container {
@@ -31,17 +31,15 @@
 </style>
 </head>
 <body>
-{{picture.name}}<br>
-{{picture.created|date:"d-m-Y"}}<br>
-{{ picture.category }}<br>
+{{icon.name}}<br>
+{{icon.created|date:"d-m-Y"}}<br>
+{{ icon.category }}<br>
 
-{{ picture.description }}<br>
-
-
+{{ icon.description }}<br>
 <div class="container">
   <div class="a">
 
-    <img onclick="On(this)" ondblclick="Off(this)" src="{{ picture.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+    <img onclick="On(this)" ondblclick="Off(this)" src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
 
 </div>
   <div class="content">
@@ -49,7 +47,14 @@
     <p>Galina</p>
 </div>
 </div>
-{% include 'additionally/likes.html' %}
+{% comment %}
+<div class="a">
+
+    <img onclick="On(this)" ondblclick="Off(this)" src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+
+</div>
+{% endcomment %}
+{% include 'likes.html' %}
 <div>
     {% if user.is_active %}
 
@@ -96,11 +101,11 @@
 	</dialog>
     <hr>
 <h3>Отзывы</h3>
-    {% for review in picture.picture_review.all %}
+    {% for review in icon.icon_review.all %}
             Пользователь - {{ review.author }}<br>
             Контент - {{ review.content }} <br>
             Добавлен - {{ review.created|date:"d-m-Y" }}<br>
-    <small><a href="{% url 'pictures:delete-review' review.id %}" style="color:red">Удалить</a></small><br>
+    <small><a href="{% url 'icon:delete-review' review.id %}" style="color:red">Удалить</a></small><br>
 
     {% endfor %}
 
@@ -135,7 +140,7 @@
 </html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<script src="{% static 'js/picture.js' %}"></script>
+<script src="{% static 'js/icon.js' %}"></script>
 <script>
 	(function() {
             var dialog = document.getElementById('profile_modal');

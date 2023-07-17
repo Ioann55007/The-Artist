@@ -1,0 +1,26 @@
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+
+{% include 'header.html' %}
+
+{% for picture in picture_list %}
+<div>
+<div>
+ <div>
+  <p>Просмотры: {{ picture.views.count }}</p>
+
+  <p style="line-height: 130%"><b> Название картины: </b></p>
+  <p style="top:13px"><a href="{{picture.slug}}" style="color:black">{{ picture.name }}</a></p><br>
+<i style="line-height: 130%"> Дата публикации: {{ picture.created }}</i><br>
+ <p> Категории: {{ picture.category }}</p><br>
+  </div>
+ <div>
+<img src="{{ picture.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+  </div>
+</div>
+</div>
+{% endfor %}
+
+{% endblock %}

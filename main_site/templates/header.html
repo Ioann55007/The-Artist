@@ -7,7 +7,7 @@
 <p class="first"><a href="{% url 'first' %}">Главная страница</a></p>
 <p class="second"><a href="{% url 'about' %}">Обо мне</a></p>
 <p class="three"><a href="{% url 'pictures:pictures'  %}">Картины</a></p>
-<p class="four">Иконы</p>
+<p class="four"><a href="{% url 'icon:icons' %}">Иконы</a></p>
 {% if user.is_authenticated %}
 <p class="five"><a href="{% url 'logout' %}">Выйти</a></p>
 <p class="five" style="left:870px"><a href="{% url 'profile' user.profile.pk %}">Профиль</a></p>
@@ -19,7 +19,9 @@
 <p class="six"><a href="{% url 'login' %}">Вход</a></p>
 
     {% endif %}
-<p class="seven"><a href="{% url 'deliver' %}">Способ доставки</a></p>
+
+        <p class="seven"><a href="{% url 'deliver' %}">Способ доставки</a></p>
+
 </section>
 </header>
 

@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
@@ -10,11 +11,14 @@ from .models import Picture, Review, Viewer
 class ViewPicture(ListView):
     model = Picture
     queryset = Picture.objects.all()
+    paginate_by = 5
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pictures'] = Picture.objects.all()
+        pictures = Picture.objects.last()
+        context['pictures'] = pictures
         return context
+
 
 
 class CountViewerMixin:

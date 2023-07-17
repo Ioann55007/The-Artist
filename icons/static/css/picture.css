@@ -1,0 +1,44 @@
+div
+{ float: left;
+line-height: 20px;
+font-size: 40px;
+background: blue;
+color: black;
+margin-top: 20px;
+width: 320px;
+margin-right: 10px; text-align: center;
+font-size: 22px;
+}
+
+
+.button {
+  outline: none;
+  border: 0;
+  background: transparent;
+}
+
+
+.a img{
+	width:280px;
+	height:300px;
+	}
+.b img{
+	width:600px;
+	height: 710px;
+	}
+
+
+ .container {
+    position: relative;
+    max-width: 800px; /* Maximum width */
+    margin: 0 auto; /* Center it */
+}
+
+.container .content {
+    position: absolute; /* Position the background text */
+    bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+    background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+    color: #f1f1f1; /* Grey text */
+    width: 100%; /* Full width */
+    padding: 20px; /* Some padding */
+}

@@ -1,21 +1,20 @@
-from django.shortcuts import render
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
 
 from .forms import ReviewForm
-from .models import Icons, Review, Viewer
+from .models import Icon, Review, Viewer
 
 
 class ViewIcon(ListView):
-    model = Icons
-    queryset = Icons.objects.all()
+    model = Icon
+    queryset = Icon.objects.all()
+    template_name = 'icon_list.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['icons'] = Icons.objects.all()
+        context['icons'] = Icon.objects.all()
         return context
 
 
@@ -23,27 +22,27 @@ class CountViewerMixin:
 
     def get(self, request, *args, **kwargs):
         response = super().get(request, *args, **kwargs)
-        if hasattr(self.object, 'views'):
+        if hasattr(self.object, 'viewers'):
             viewer, created = Viewer.objects.get_or_create(
                 ipaddress=None if request.user.is_authenticated else get_client_ip(request, id),
                 user=request.user if request.user.is_authenticated else None
             )
 
-            if self.object.views.filter(id=viewer.id).count() == 0:
-                self.object.views.add(viewer)
+            if self.object.viewers.filter(id=viewer.id).count() == 0:
+                self.object.viewers.add(viewer)
 
         return response
 
 
 class DetailIcon(CountViewerMixin, FormMixin, DetailView):
-    model = Icons
-    template_name = 'icons_detail.html'
+    model = Icon
+    template_name = 'icon_detail.html'
     form_class = ReviewForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         liked = False
-        if self.object.likes.filter(id=self.request.user.id).exists():
+        if self.object.icon_likes.filter(id=self.request.user.id).exists():
             liked = True
         context['icon'] = context.get('object')
         context['liked'] = liked
@@ -51,7 +50,7 @@ class DetailIcon(CountViewerMixin, FormMixin, DetailView):
         return context
 
     def post(self, request, slug, *args, **kwargs):
-        icon = get_object_or_404(Icons, slug=slug)
+        icon = get_object_or_404(Icon, slug=slug)
         reviews = Review.objects.all()
 
         if request.method == 'POST':
@@ -64,7 +63,7 @@ class DetailIcon(CountViewerMixin, FormMixin, DetailView):
         else:
             form = ReviewForm()
         return render(request, 'icon_detail.html', {'form': form, 'reviews': reviews, 'icon': icon,
-                                                                })
+                                                    })
 
 
 def get_client_ip(request, id):
@@ -87,9 +86,14 @@ def delete_review(request, id):
 
 def like(request, id):
     if request.method == 'POST':
-        icon = Icons.objects.get(id=id)
-        if icon.likes.filter(id=request.user.id).exists():
-            icon.likes.remove(request.user.id)
+
+        icon = Icon.objects.get(id=id)
+
+        if icon.icon_likes.filter(id=request.user.id).exists():
+            icon.icon_likes.remove(request.user.id)
         else:
-            icon.likes.add(request.user.id)
+            icon.icon_likes.add(request.user.id)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+

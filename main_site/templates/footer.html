@@ -1,28 +1,23 @@
 {% block content %}
-
 <footer>
-<div class="frame">
-    <div class="ssalc">
+<section class="frame">
+    <section class="ssalc">
         <p>Контактные данные:  </p>
         <p>телефон:  89270877738</p>
         <p>email:</p>
         <p>watsaApp: 89270877738</p>
 
-    </div>
-    <div class="mid">
+    </section>
+    <section class="mid">
         <a href="{% url 'confined' %}"><p>Политика конфиденциальности</p></a>
 
-    </div>
-    <div class="kert">
-        <p>Обратная связь</p>
-
-    </div>
-    <div class="zass">
-        <p>Правила сайта</p>
+    </section>
+    <section class="zass">
+        <p><a href="{% url 'rules' %}">Правила сайта</a></p>
 
 
-    </div>
-</div>
+    </section>
+</section>
 </footer>
 
 
