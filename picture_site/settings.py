@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os.path
 from datetime import timedelta
 from pathlib import Path
+
+import django
+from django.conf import settings
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -22,13 +26,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-01l#7)e6es+o7gqri)q$b8g-b)ds$+&b1r&m%p!xx(tnsv2==2'
 
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ioann.basic@gmail.com'
 EMAIL_HOST_PASSWORD = 'cgegpqniwokskvih'
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 EMAIL_PORT = 587
 
 # ALLOWED_HOSTS: list = os.environ.get("DJANGO_ALLOWED_HOSTS", 'localhost,127.0.0.1').split(",")

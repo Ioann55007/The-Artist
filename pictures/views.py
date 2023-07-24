@@ -20,7 +20,6 @@ class ViewPicture(ListView):
         return context
 
 
-
 class CountViewerMixin:
 
     def get(self, request, *args, **kwargs):

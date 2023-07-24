@@ -1,3 +1,12 @@
-from django.test import TestCase
+import os
 
-# Create your tests here.
+from django.test import TestCase, RequestFactory, Client
+from .views import DetailPicture
+
+
+
+
+
+
+
+
