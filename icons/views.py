@@ -9,7 +9,8 @@ from .models import Icon, Review, Viewer
 
 class ViewIcon(ListView):
     model = Icon
-    queryset = Icon.objects.all()
+    # queryset = Icon.objects.all()
+    et = Icon.objects.all()
     template_name = 'icon_list.html'
 
     def get_context_data(self, **kwargs):
