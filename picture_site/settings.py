@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'icons.apps.IconsConfig',
     'main_site.apps.MainSiteConfig',
     'register_auth.apps.RegisterAuthConfig',
+    'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'crispy_forms',

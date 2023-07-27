@@ -19,6 +19,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from icons import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +28,7 @@ urlpatterns = [
     path('', include('icons.urls', namespace='icon')),
     path('', include('register_auth.urls')),
     path('', include('profile_user.urls')),
+
 ]
 
 

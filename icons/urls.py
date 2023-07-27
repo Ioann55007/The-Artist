@@ -7,7 +7,7 @@ urlpatterns = [
     path('icons/', views.ViewIcon.as_view(), name='icons'),
     path('icons/<slug:slug>/', views.DetailIcon.as_view(), name='icon'),
     path('delete_review_icon/<int:id>/', views.delete_review, name='delete-review'),
-    path('icon_like/<int:id>', views.like, name='add_like')
-
-
+    path('icon_like/<int:id>', views.like, name='add_like'),
+    path('api/v1/', views.IconDetailView.as_view()),
+    path('api/v2/', views.IconCreateView.as_view()),
 ]

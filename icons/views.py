@@ -1,10 +1,15 @@
+from django.forms import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
+from rest_framework.response import Response
 
 from .forms import ReviewForm
 from .models import Icon, Review, Viewer
+from rest_framework.views import APIView
+
+from .serializers import IconDetailSerializer, IconCreateSerializer
 
 
 class ViewIcon(ListView):
@@ -95,6 +100,28 @@ def like(request, id):
         else:
             icon.icon_likes.add(request.user.id)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+
+
+class IconDetailView(APIView):
+    def get(self, request):
+        icon = Icon.objects.filter(name__startswith="Царь Давид")
+        serializer = IconDetailSerializer(icon, many=True)
+        return Response({'icon': serializer.data})
+
+
+class IconCreateView(APIView):
+
+    def get(self, request):
+        icon_list = Icon.objects.all()
+        return Response({"icons": IconCreateSerializer(icon_list, many=True).data})
+
+    def post(self, request):
+        icon = IconCreateSerializer(data=request.data)
+        if icon.is_valid():
+            icon.save()
+        return Response(status=201)
 
 
 
