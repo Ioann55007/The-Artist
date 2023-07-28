@@ -3,9 +3,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import FormMixin
+from rest_framework.response import Response
+
+from rest_framework.views import APIView
 
 from .forms import ReviewForm
 from .models import Picture, Review, Viewer
+from .serializers import PictureCreateSerializer
 
 
 class ViewPicture(ListView):
@@ -95,3 +99,15 @@ def like(request, id):
         else:
             picture.likes.add(request.user.id)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+class PictureApiView(APIView):
+    def get(self, request):
+        list_picture = Picture.objects.all()
+        return Response({"all_pictures": PictureCreateSerializer(list_picture, many=True).data})
+
+    def post(self, request):
+        picture = PictureCreateSerializer(data=request.data)
+        if picture.is_valid():
+            picture.save()
+        return Response(status=201)

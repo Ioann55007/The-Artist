@@ -7,11 +7,12 @@ from django.views import View
 from django.views.generic import TemplateView, UpdateView, DetailView
 from rest_framework import permissions
 from rest_framework.permissions import BasePermission
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import Profile
 from .forms import ProfileForm
-
-
+from .serializers import ProfileSerializer
 
 
 class ProfileView(DetailView):
@@ -32,6 +33,26 @@ class ProfileUpdate(UpdateView):
     form_class = ProfileForm
     template_name = 'profile_user/profile_form.html'
 
-    # success_url = reverse_lazy('profile')
+
     def get_success_url(self):
         return reverse('profile', kwargs={"pk": self.object.id})
+
+
+class ProfileApi(APIView):
+    def put(self, request, *args, **kwargs):
+        pk = kwargs.get("pk", None)
+        if not pk:
+            return Response({"error": "Метод PUT не разрешён"})
+
+        try:
+            instance = Profile.objects.get(pk=pk)
+        except:
+            return Response({"error": "Объект не найден"})
+
+        serializer = ProfileSerializer(data=request.data, instance=instance)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response({"post": serializer.data})
+
+
+
