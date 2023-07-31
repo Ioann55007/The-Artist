@@ -4,7 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import TemplateView, UpdateView, DetailView
+from django.views.generic import TemplateView, UpdateView, DetailView, DeleteView
 from rest_framework import permissions
 from rest_framework.permissions import BasePermission
 from rest_framework.response import Response
@@ -33,9 +33,15 @@ class ProfileUpdate(UpdateView):
     form_class = ProfileForm
     template_name = 'profile_user/profile_form.html'
 
-
     def get_success_url(self):
         return reverse('profile', kwargs={"pk": self.object.id})
+
+
+class DeleteProfile(DeleteView):
+    model = Profile
+    success_url = reverse_lazy("first")
+
+   
 
 
 class ProfileApi(APIView):
@@ -53,6 +59,3 @@ class ProfileApi(APIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({"post": serializer.data})
-
-
-

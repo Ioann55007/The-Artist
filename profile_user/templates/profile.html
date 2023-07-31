@@ -28,7 +28,9 @@
 
                                     <h2 class="d-block" style="font-size: 1.5rem; font-weight: bold">
                                         <a href="javascript:void(0);">{{ profile.username }}</a></h2>
+                                    <p style="color:red"><a href="{% url 'delete-profile' profile.pk %}">Удалить</a></p>
                                 </div>
+
                                 <div class="ml-auto">
 
                                     <a href="{% url 'edit' profile.pk %}">Редактируйте</a>

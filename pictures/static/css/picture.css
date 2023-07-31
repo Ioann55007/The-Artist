@@ -2,9 +2,8 @@ div
 { float: left;
 line-height: 20px;
 font-size: 40px;
-background: blue;
 color: black;
-margin-top: 20px;
+margin-top: 30px;
 width: 320px;
 margin-right: 10px; text-align: center;
 font-size: 22px;
@@ -26,3 +25,188 @@ font-size: 22px;
 	width:600px;
 	height: 710px;
 	}
+
+
+
+.product-grid{ text-align: center; }
+.product-grid .product-image{
+    overflow: hidden;
+    position: relative;
+}
+.product-grid .product-image:before{
+    content: "";
+    background: rgba(0,0,0,0.02);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+.product-grid .product-image img{
+    width: 100%;
+    height: auto;
+}
+.product-grid .pic-1{
+    opacity: 1;
+    transform: rotateY(0);
+    transition: all 0.5s ease-out 0s;
+}
+.product-grid:hover .pic-1{
+    opacity: 0;
+    transform: rotateY(-90deg);
+}
+.product-grid .pic-2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: rotateY(-90deg);
+    transition: all 0.5s ease-out 0s;
+}
+.product-grid:hover .pic-2{
+    opacity: 1;
+    transform: rotateY(0deg);
+}
+.product-grid .social{
+    width: 100%;
+    background: #ededed;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    transition: all 0.5s ease 0s;
+}
+.product-grid:hover .social{ opacity: 1; }
+.product-grid .social li{ display: inline-block; }
+.product-grid .social li a{
+    display: block;
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    background: #ededed;
+    font-size: 20px;
+    color: #000;
+    transition: all 0.3s ease 0s;
+}
+.product-grid .social li a:hover{
+    background: #fff;
+    color: #d15f21;
+}
+.product-grid .discount{
+    width: 100%;
+    padding: 15px;
+    background: #e4f6ff;;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.product-grid .product-content{ padding: 15px 0; }
+.product-grid .title{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    text-transform: capitalize;
+    margin: 0 0 5px 0;
+}
+.product-grid .price{
+    font-size: 16px;
+    font-weight: 600;
+    color: #d15f21;
+    margin-bottom: 5px;
+}
+.product-grid .price span{
+    display: inline-block;
+    color: #999;
+    margin-right: 2px;
+}
+.product-grid .rating{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.product-grid .rating li{
+    display: inline-block;
+    font-size: 5px;
+    color: #ffc000;
+}
+@media only screen and (max-width:990px){
+    .product-grid{ margin-bottom: 30px; }
+}
+
+
+
+.frame-1{
+/* Frame 1 */
+
+box-sizing: border-box;
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: flex-start;
+padding: 10px;
+gap: 10px;
+
+position: relative;
+width: 1058px;
+height: 100px;
+margin-left:605px;
+
+background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #231C1C;
+border: 1px solid #000000;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+
+/* romm_kartina_maslom_v_doline_gor_ar181106_f2yn2zj_RvbZDBG_bLiBf3b 2 */
+
+box-sizing: border-box;
+
+width: 500px;
+height: 700px;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+
+
+.content {
+    position: absolute;
+    top:300px;
+    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    color: #f1f1f1;
+    width: 97%;
+    padding: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

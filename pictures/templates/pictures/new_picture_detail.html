@@ -1,0 +1,134 @@
+{% load static %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+<link rel="stylesheet" href="{% static 'css/picture.css' %}">
+<div class="frame-1">
+        <img onclick="On(this)" ondblclick="Off(this)" src="{{ picture.image.url }}" width="470" height="350" style="left: 35px; margin-bottom: 35px">
+
+    <p style="position:absolute;color:white;margin-top:370px; margin-left:82px"><b style="color:red">категория: </b><i>{{picture.category}}
+        </i></p>
+        <p style="color:white;margin-top:410px; margin-left:82px; position:absolute">
+            <b style="color:red">название: </b>{{picture.name}}
+        </p>
+    <p style="color:white;margin-top:450px; margin-left:82px; position:absolute">
+        <b style="color:red">описание: </b></p>
+    <p style="color:white;margin-top:490px; margin-left:82px; position:absolute">{{ picture.description }}</p>
+    <p style="color:white;margin-top:530px; margin-left:82px; position:absolute"><b style="color:red">дата создания: </b>{{picture.created|date:"d-m-Y"}}
+</p>
+
+        <p id="show" style="background: green; border:3px red  ridge; width: 400px;
+         padding: 10px 0 10px 15px;  margin-top:640px;color:white; margin-left:20px;position:absolute">
+             хотите приобрести?</p>
+        <div class="content">Galina</div>
+
+
+    </div>
+{% include 'additionally/likes.html' %}
+
+
+<div style="position:relative;top:802px;right: 48%;">
+    {% if user.is_active %}
+
+
+
+	<dialog id="profile_modal">
+	  	<div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      	<div class="modal-header">
+			        <h4 class="modal-title">Хотите заказать?</h4>
+					<p></p>
+					<select>
+
+                        <option>Прежде чем заказать ознакомьтесь с условиями покупки</option>
+                        <option> Способ доставки - почта России и СДЭК</option>
+                        <option> Предоплата 100 %</option>
+                        <option>Форма оплаты - онлайн после связи</option>
+                        <option>Доставка в стоимость картины не входит</option>
+                    </select>
+					<p>Галина Максимовна</p>
+					<p>Телефон</p>
+					<p>79270877738</p>
+					<p>WhatsAp привязан к телефону.</p>
+
+		        </div>
+		        <div class="modal-body">
+			        <form method="post">
+			          	{% csrf_token %}
+			          	{{ user_form|crispy }}
+                </div>
+		      	<div class="modal-footer">
+					</form>
+		        	<button type="button" id="close" class="btn btn-secondary"
+                            data-dismiss="modal">Close</button>
+		        </div>
+		    </div>
+	  	</div>
+
+	</dialog>
+<h3 style="margin-left:67%">Отзывы</h3>
+    {% for review in picture.picture_review.all %}
+            <b>Пользователь</b> - {{ review.author }}<br>
+            Контент - {{ review.content }} <br>
+            Добавлен - {{ review.created|date:"d-m-Y" }}<br>
+    <small><a href="{% url 'pictures:delete-review' review.id %}" style="color:red">Удалить</a></small><br>
+
+    {% endfor %}
+
+<div style=position:absolute;margin-right:95px">
+    <form action="" method="post">
+        {% csrf_token %}
+        <div style="text-align:center">
+        {{ form.as_p }}
+        </div>
+        <button id="mainButton" type="submit" style="border:solid 2px
+                                             blue;background-color:blue;color:white;">Отправить
+        </button>
+    </form>
+
+</div>
+
+
+    {% else %}
+    <hr>
+<h3>Отзывы</h3>
+
+    <h4>Что бы оставить и просмотреть комментарии авторизуйтесь</h4>
+    {% endif %}
+</div>
+
+<script src="https://yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-curtain data-shape="round"
+     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir">
+
+</div>
+
+{% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="{% static 'js/picture.js' %}"></script>
+<script>
+	(function() {
+            var dialog = document.getElementById('profile_modal');
+
+			document.getElementById('show').onclick = function() {
+                dialog.show();
+            };
+
+            document.getElementById('close').onclick = function() {
+                dialog.close();
+            };
+            document.getElementById('Clos').onclick = function() {
+                dialog.close();
+            };
+
+
+        })();
+
+
+</script>
+
+<script>
+
+</script>

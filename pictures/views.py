@@ -1,7 +1,6 @@
-from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormMixin
 from rest_framework.response import Response
 
@@ -12,16 +11,28 @@ from .models import Picture, Review, Viewer
 from .serializers import PictureCreateSerializer
 
 
+
+
+
+
+
 class ViewPicture(ListView):
     model = Picture
     queryset = Picture.objects.all()
-    paginate_by = 5
+
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         pictures = Picture.objects.last()
         context['pictures'] = pictures
         return context
+
+
+class NewPictureView(TemplateView):
+    template_name = "pictures/new_picture_detail.html"
+
+
 
 
 class CountViewerMixin:
@@ -42,7 +53,9 @@ class CountViewerMixin:
 
 class DetailPicture(CountViewerMixin, FormMixin, DetailView):
     model = Picture
-    template_name = 'pictures/picture_detail.html'
+    # template_name = 'pictures/picture_detail.html'
+    template_name = "pictures/new_picture_detail.html"
+
     form_class = ReviewForm
 
     def get_context_data(self, **kwargs):

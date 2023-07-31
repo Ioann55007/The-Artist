@@ -1,7 +1,7 @@
 from django.forms import model_to_dict
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import FormMixin
 from rest_framework.response import Response
 
@@ -14,9 +14,10 @@ from .serializers import IconDetailSerializer, IconCreateSerializer
 
 class ViewIcon(ListView):
     model = Icon
-    # queryset = Icon.objects.all()
-    et = Icon.objects.all()
+    queryset = Icon.objects.all()
+    # et = Icon.objects.all()
     template_name = 'icon_list.html'
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -122,6 +123,10 @@ class IconCreateView(APIView):
         if icon.is_valid():
             icon.save()
         return Response(status=201)
+
+
+
+
 
 
 
