@@ -36,6 +36,10 @@ EMAIL_HOST_PASSWORD = 'cgegpqniwokskvih'
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 EMAIL_PORT = 587
 
+
+
+
+
 # ALLOWED_HOSTS: list = os.environ.get("DJANGO_ALLOWED_HOSTS", 'localhost,127.0.0.1').split(",")
 
 

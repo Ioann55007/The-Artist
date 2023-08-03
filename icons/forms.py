@@ -6,6 +6,7 @@ from .models import Review
 
 
 class ReviewForm(ModelForm):
+    content = forms.CharField(label='Сообщение', widget=forms.Textarea(attrs={'cols': 80, 'rows': 10}))
 
     class Meta:
         model = Review

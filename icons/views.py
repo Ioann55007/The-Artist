@@ -67,6 +67,8 @@ class DetailIcon(CountViewerMixin, FormMixin, DetailView):
                 form.author = self.request.user
                 form.icon = icon
                 form.save()
+                return redirect('icon:icon', slug)
+
         else:
             form = ReviewForm()
         return render(request, 'icon_detail.html', {'form': form, 'reviews': reviews, 'icon': icon,

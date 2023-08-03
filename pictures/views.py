@@ -29,8 +29,8 @@ class ViewPicture(ListView):
         return context
 
 
-class NewPictureView(TemplateView):
-    template_name = "pictures/new_picture_detail.html"
+# class NewPictureView(TemplateView):
+#     template_name = "pictures/new_picture_detail.html"
 
 
 
@@ -54,7 +54,7 @@ class CountViewerMixin:
 class DetailPicture(CountViewerMixin, FormMixin, DetailView):
     model = Picture
     # template_name = 'pictures/picture_detail.html'
-    template_name = "pictures/new_picture_detail.html"
+    template_name = "pictures/picture_detail.html"
 
     form_class = ReviewForm
 
@@ -79,7 +79,7 @@ class DetailPicture(CountViewerMixin, FormMixin, DetailView):
                 form.author = self.request.user
                 form.picture = picture
                 form.save()
-                # return redirect('pictures:picture', pk)
+                return redirect('pictures:picture', slug)
         else:
             form = ReviewForm()
         return render(request, 'pictures/picture_detail.html', {'form': form, 'reviews': reviews, 'picture': picture,

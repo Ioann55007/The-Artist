@@ -28,7 +28,6 @@ urlpatterns = [
     path('', include('icons.urls', namespace='icon')),
     path('', include('register_auth.urls')),
     path('', include('profile_user.urls')),
-
 ]
 
 

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 {% load static %}
+
+{% block content %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="static/css/base_css.css">
+ <link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+
+
     <link rel="icon" href="{% static 'favicon.ico' %}">
 
 </head>
@@ -12,9 +17,10 @@
 {% include 'header.html' %}
 <div class="mass">
 <img src="media/Главная.jpg">
-{% include 'footer.html' %}
 
 </div>
+{% include 'footer.html' %}
 
 </body>
 </html>
+{% endblock %}

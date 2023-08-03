@@ -1,19 +1,28 @@
-
+{% load static %}
 {% block content %}
 
-{% load static %}
-<link href="//db.onlinewebfonts.com/c/a4e256ed67403c6ad5d43937ed48a77b?family=Core+Sans+N+W01+35+Light" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
-<div class="body-content">
-  <div class="module">
-    <h1>Создать новый аккауент</h1>
-    <form class="form"  method="post">
-        {% csrf_token %}
-      <div class="alert alert-error"></div>
-        {{ form.as_p }}
-     <button type="submit" style="background:red; color:black">Регистрация</button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 
-    </form>
-  </div>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+
+
+
+ <div class="container">
+ <div class="row main-form">
+ <form class="" method="post">
+{% csrf_token %}
+
+{{ form.as_p }}
+      <div class="form-group ">
+               <button type="submit" style="background:red; color:black">Регистрация</button>
+ </div>
+ </form>
+ </div>
+ </div>
+
+
+
 {% endblock %}

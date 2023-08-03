@@ -1,68 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
 {% load static %}
 {% block content %}
-
 {% load crispy_forms_tags %}
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
+
+<link rel="stylesheet" href="{% static 'css/picture.css' %}">
+<link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+<link rel="icon" href="{% static 'favicon.ico' %}">
+{% include 'header.html' %}
+<div class="frame-1">
+        <img onclick="On(this)" ondblclick="Off(this)" src="{{ icon.image.url }}" width="470" height="350" style="left: 35px; margin-bottom: 35px">
+
+    <p style="position:absolute;color:white;margin-top:370px; margin-left:82px"><b style="color:red">категория: </b><i>{{icon.category}}
+        </i></p>
+        <p style="color:white;margin-top:410px; margin-left:82px; position:absolute">
+            <b style="color:red">название: </b>{{icon.name}}
+        </p>
+    <p style="color:white;margin-top:450px; margin-left:82px; position:absolute">
+        <b style="color:red">описание: </b></p>
+    <p style="color:white;margin-top:490px; margin-left:82px; position:absolute">{{ icon.description }}</p>
+    <p style="color:white;margin-top:530px; margin-left:82px; position:absolute"><b style="color:red">дата создания: </b>{{icon.created|date:"d-m-Y"}}
+</p>
+
+        <p id="show" style="background: green; border:3px red  ridge; width: 400px;
+         padding: 10px 0 10px 15px;  margin-top:640px;color:white; margin-left:20px;position:absolute">
+             хотите приобрести?</p>
+        <div class="content">Galina</div>
 
 
-.container {
-    position: relative;
-    max-width: 275px;
-    margin-left: 35px;
-    margin-bottom: 35px;
-
-}
-
-.container img {vertical-align: middle;}
-
-.container .content {
-    position: absolute;
-    top:240px;
-    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
-    color: #f1f1f1;
-    width: 100%;
-    padding: 2px;
-}
-</style>
-</head>
-<body>
-{{icon.name}}<br>
-{{icon.created|date:"d-m-Y"}}<br>
-{{ icon.category }}<br>
-
-{{ icon.description }}<br>
-<div class="container">
-  <div class="a">
-
-    <img onclick="On(this)" ondblclick="Off(this)" src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
-
-</div>
-  <div class="content">
-
-    <p>Galina</p>
-</div>
-</div>
-{% comment %}
-<div class="a">
-
-    <img onclick="On(this)" ondblclick="Off(this)" src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
-
-</div>
-{% endcomment %}
+    </div>
+<div style="margin-top:750px; margin-left:900px;position:absolute">
 {% include 'likes.html' %}
-<div>
+</div>
+<div class="ya-share2" data-curtain data-shape="round"
+     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir"
+style="margin-top:770px; margin-left:400px;position:absolute">
+
+
+</div>
+
+
+<div style="position:relative;top:802px;right: 48%;">
     {% if user.is_active %}
-
-
-		<button id="show" class="btn btn-outline-primary btn-sm">Хотите заказать?</button>
-
-
-
 
 
 
@@ -90,36 +67,49 @@
 			        <form method="post">
 			          	{% csrf_token %}
 			          	{{ user_form|crispy }}
-				 </div>
+                    </form>
+                </div>
 		      	<div class="modal-footer">
-					</form>
-		        	<button type="button" id="close" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+		        	<button type="button" id="close" class="btn btn-secondary"
+                            data-dismiss="modal">Close
+                    </button>
 		        </div>
 		    </div>
 	  	</div>
 
 	</dialog>
-    <hr>
-<h3>Отзывы</h3>
+<h3 style="margin-left:555px;margin-top:300px; position:absolute">Отзывы</h3>
+    <div>
+    <div style="margin-top:300px;display:inline-block">
     {% for review in icon.icon_review.all %}
-            Пользователь - {{ review.author }}<br>
-            Контент - {{ review.content }} <br>
-            Добавлен - {{ review.created|date:"d-m-Y" }}<br>
-    <small><a href="{% url 'icon:delete-review' review.id %}" style="color:red">Удалить</a></small><br>
+        <div style="margin-left:320px;margin-top:170px">
+           <p><b>Пользователь</b> - {{ review.author }}</p>
+           <p><b>Контент</b>:
+              <p><textarea cols="80" rows="10">{{ review.content }}</textarea></p>
+           </p>
+           <p><b>Добавлен</b> - {{ review.created|date:"d-m-Y" }}</p>
 
+
+    <small><a href="{% url 'icon:delete-review' review.id %}" style="color:red">Удалить</a></small>
+        </div>
     {% endfor %}
+ </div>
 
-
+<div style="margin-left:330px;margin-top:10px">
     <form action="" method="post">
         {% csrf_token %}
+        <div style="text-align:center">
         {{ form.as_p }}
+        </div>
         <button type="submit" style="border:solid 2px
                                              blue;background-color:blue;color:white;">Отправить
         </button>
-
-
-
     </form>
+
+</div>
+
+</div>
 
     {% else %}
     <hr>
@@ -130,14 +120,11 @@
 </div>
 
 <script src="https://yastatic.net/share2/share.js"></script>
-<div class="ya-share2" data-curtain data-shape="round"
-     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir">
-
+<div style="margin-top:953px;margin-right:72%">
+{% include 'footer.html' %}
 </div>
 {% endblock %}
-</body>
 
-</html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script src="{% static 'js/icon.js' %}"></script>
@@ -152,12 +139,14 @@
             document.getElementById('close').onclick = function() {
                 dialog.close();
             };
-            document.getElementById('Clos').onclick = function() {
-                dialog.close();
-            };
+
 
 
         })();
 
+
+</script>
+
+<script>
 
 </script>
