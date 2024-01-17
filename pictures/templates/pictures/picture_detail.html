@@ -7,39 +7,45 @@
 <link rel="icon" href="{% static 'favicon.ico' %}">
 {% include 'header.html' %}
 <div class="frame-1">
+    <div style="position:relative">
         <img onclick="On(this)" ondblclick="Off(this)" src="{{ picture.image.url }}" width="470" height="350" style="left: 35px; margin-bottom: 35px">
 
-    <p style="position:absolute;color:white;margin-top:370px; margin-left:82px"><b style="color:red">категория: </b><i>{{picture.category}}
+    <p style="  position:relative;color:black;margin-left:82px"><b style="color:red">категория: </b><i>{{picture.category}}
         </i></p>
-        <p style="color:white;margin-top:410px; margin-left:82px; position:absolute">
+        <p style="color:black; margin-left:82px; position:relative">
             <b style="color:red">название: </b>{{picture.name}}
         </p>
-    <p style="color:white;margin-top:450px; margin-left:82px; position:absolute">
+    <p style="color:black;margin-left:82px; position:relative">
         <b style="color:red">описание: </b></p>
-    <p style="color:white;margin-top:490px; margin-left:82px; position:absolute">{{ picture.description }}</p>
-    <p style="color:white;margin-top:530px; margin-left:82px; position:absolute"><b style="color:red">дата создания: </b>{{picture.created|date:"d-m-Y"}}
+    <p style="color:black; margin-left:82px; position:relative">{{ picture.description }}</p>
+    <p style="color:black; margin-left:82px; position:relative"><b style="color:red">дата создания: </b>{{picture.created|date:"d-m-Y"}}
 </p>
 
         <p id="show" style="background: green; border:3px red  ridge; width: 400px;
-         padding: 10px 0 10px 15px;  margin-top:640px;color:white; margin-left:20px;position:absolute">
+         padding: 10px 0 10px 15px;color:white; margin-left:20px;position:relative">
              хотите приобрести?</p>
         <div class="content">Galina</div>
 
+</div>
+    <div class="ya-share2" data-curtain data-shape="round"
+     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir"
+style="margin-top:200px; margin-left:400px;position:relative">
 
+
+</div>
     </div>
+
+{% comment %}
+
 <div style="margin-top:750px; margin-left:900px;position:absolute">
 {% include 'additionally/likes.html' %}
 </div>
-<div class="ya-share2" data-curtain data-shape="round"
-     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir"
-style="margin-top:770px; margin-left:400px;position:absolute">
 
-
-</div>
+{% endcomment %}
 
 
 <div style="position:relative;top:802px;right: 48%;">
-    {% if user.is_active %}
+
 
 
 
@@ -79,6 +85,11 @@ style="margin-top:770px; margin-left:400px;position:absolute">
 	  	</div>
 
 	</dialog>
+
+    {% comment %}
+
+
+
 <h3 style="margin-left:555px;margin-top:300px; position:absolute">Отзывы</h3>
     <div>
     <div style="margin-top:300px;display:inline-block">
@@ -118,6 +129,9 @@ style="margin-top:770px; margin-left:400px;position:absolute">
     <h4>Что бы оставить и просмотреть комментарии авторизуйтесь</h4>
     {% endif %}
 </div>
+
+{% endcomment %}
+
 
 <script src="https://yastatic.net/share2/share.js"></script>
 <div style="margin-top:953px;margin-right:72%">

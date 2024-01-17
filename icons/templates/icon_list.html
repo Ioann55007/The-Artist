@@ -10,6 +10,9 @@
 <div>
 <div>
  <div>
+   <div>
+<img src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
+  </div>
   <p>Просмотры: {{ icon.viewers.count }}</p>
 
   <p style="line-height: 130%"><b> Название Иконы: </b></p>
@@ -17,9 +20,7 @@
 <i style="line-height: 130%"> Дата публикации: {{ icon.created }}</i><br>
  <p> Категории: {{ icon.category }}</p><br>
   </div>
- <div>
-<img src="{{ icon.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
-  </div>
+
 </div>
 </div>
 {% endfor %}
