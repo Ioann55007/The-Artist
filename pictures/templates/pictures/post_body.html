@@ -1,27 +1,37 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/picture.css' %}">
+
 
 {% include 'header.html' %}
 
+<div class="cards">
+<div class="contain contain__cards">
 {% for picture in picture_list %}
-<div>
-<div>
- <div>
+<div class="card">
+ <div class="card__top">
 <img src="{{ picture.image.url }}" width="280" height="300" style="left: 35px; margin-bottom: 35px">
-  </div>
- <div>
+</div>
+<div class="card__bottom">
+ <div class="card__views">
   <p>Просмотры: {{ picture.views.count }}</p>
-
+</div>
+ <div class="card__title">
   <p style="line-height: 130%"><b> Название картины: </b></p>
   <p style="top:13px"><a href="{{picture.slug}}" style="color:black">{{ picture.name }}</a></p><br>
+  </div>
 <i style="line-height: 130%"> Дата публикации: {{ picture.created }}</i><br>
  <p> Категории: {{ picture.category }}</p><br>
-  </div>
+</div>
 
 </div>
-</div>
+
 {% endfor %}
+</div>
+</div>
+
+
+
+
 
 {% endblock %}

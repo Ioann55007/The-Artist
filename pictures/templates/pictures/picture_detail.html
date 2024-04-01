@@ -4,10 +4,17 @@
 
 <link rel="stylesheet" href="{% static 'css/picture.css' %}">
 <link rel="stylesheet" href="{% static 'css/base_css.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+
 <link rel="icon" href="{% static 'favicon.ico' %}">
+<style>
+    body{
+    background-image: url({% static 'images/5594016.jpg' %});
+    }
+</style>
 {% include 'header.html' %}
 <div class="frame-1">
-    <div style="position:relative">
+    <div style="position:relative; bottom:50%">
         <img onclick="On(this)" ondblclick="Off(this)" src="{{ picture.image.url }}" width="470" height="350" style="left: 35px; margin-bottom: 35px">
 
     <p style="  position:relative;color:black;margin-left:82px"><b style="color:red">категория: </b><i>{{picture.category}}
@@ -21,146 +28,13 @@
     <p style="color:black; margin-left:82px; position:relative"><b style="color:red">дата создания: </b>{{picture.created|date:"d-m-Y"}}
 </p>
 
-        <p id="show" style="background: green; border:3px red  ridge; width: 400px;
-         padding: 10px 0 10px 15px;color:white; margin-left:20px;position:relative">
-             хотите приобрести?</p>
+
         <div class="content">Galina</div>
 
 </div>
-    <div class="ya-share2" data-curtain data-shape="round"
-     data-services="messenger,vkontakte,odnoklassniki,telegram,whatsapp,moimir"
-style="margin-top:200px; margin-left:400px;position:relative">
 
-
-</div>
     </div>
-
-{% comment %}
-
-<div style="margin-top:750px; margin-left:900px;position:absolute">
-{% include 'additionally/likes.html' %}
-</div>
-
-{% endcomment %}
-
-
-<div style="position:relative;top:802px;right: 48%;">
-
-
-
-
-	<dialog id="profile_modal">
-	  	<div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      	<div class="modal-header">
-			        <h4 class="modal-title">Хотите заказать?</h4>
-					<p></p>
-					<select>
-
-                        <option>Прежде чем заказать ознакомьтесь с условиями покупки</option>
-                        <option> Способ доставки - почта России и СДЭК</option>
-                        <option> Предоплата 100 %</option>
-                        <option>Форма оплаты - онлайн после связи</option>
-                        <option>Доставка в стоимость картины не входит</option>
-                    </select>
-					<p>Галина Максимовна</p>
-					<p>Телефон</p>
-					<p>79270877738</p>
-					<p>WhatsAp привязан к телефону.</p>
-
-		        </div>
-		        <div class="modal-body">
-			        <form method="post">
-			          	{% csrf_token %}
-			          	{{ user_form|crispy }}
-                    </form>
-                </div>
-		      	<div class="modal-footer">
-
-		        	<button type="button" id="close" class="btn btn-secondary"
-                            data-dismiss="modal">Close
-                    </button>
-		        </div>
-		    </div>
-	  	</div>
-
-	</dialog>
-
-    {% comment %}
-
-
-
-<h3 style="margin-left:555px;margin-top:300px; position:absolute">Отзывы</h3>
-    <div>
-    <div style="margin-top:300px;display:inline-block">
-    {% for review in picture.picture_review.all %}
-        <div style="margin-left:320px;margin-top:170px">
-           <p><b>Пользователь</b> - {{ review.author }}</p>
-           <p><b>Контент</b>:
-              <p><textarea cols="80" rows="10">{{ review.content }}</textarea></p>
-           </p>
-           <p><b>Добавлен</b> - {{ review.created|date:"d-m-Y" }}</p>
-
-
-    <small><a href="{% url 'pictures:delete-review' review.id %}" style="color:red">Удалить</a></small>
-        </div>
-    {% endfor %}
- </div>
-
-<div style="margin-left:330px;margin-top:10px">
-    <form action="" method="post">
-        {% csrf_token %}
-        <div style="text-align:center">
-        {{ form.as_p }}
-        </div>
-        <button type="submit" style="border:solid 2px
-                                             blue;background-color:blue;color:white;">Отправить
-        </button>
-    </form>
-
-</div>
-
-</div>
-
-    {% else %}
-    <hr>
-<h3>Отзывы</h3>
-
-    <h4>Что бы оставить и просмотреть комментарии авторизуйтесь</h4>
-    {% endif %}
-</div>
-
-{% endcomment %}
-
-
-<script src="https://yastatic.net/share2/share.js"></script>
-<div style="margin-top:953px;margin-right:72%">
 {% include 'footer.html' %}
-</div>
+
 {% endblock %}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script src="{% static 'js/picture.js' %}"></script>
-<script>
-	(function() {
-            var dialog = document.getElementById('profile_modal');
-
-			document.getElementById('show').onclick = function() {
-                dialog.show();
-            };
-
-            document.getElementById('close').onclick = function() {
-                dialog.close();
-            };
-
-
-
-        })();
-
-
-</script>
-
-<script>
-
-</script>

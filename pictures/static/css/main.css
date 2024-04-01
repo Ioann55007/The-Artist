@@ -1,0 +1,41 @@
+
+/* Product card */
+
+/* Footer */
+.footer {
+	color: #fff;
+}
+
+.footer__top {
+	background-color:#1e212c;
+}
+
+.footer__top-inner{
+display:grid;
+grid-template-columns: repeat(4, auto);
+}
+
+.footer a {
+	text-decoration: none;
+	transition: all .3s;
+}
+
+.footer a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+.footer a, .footer li {
+	color: #c8c8c8;
+}
+
+.footer li a {
+	display: block;
+}
+
+.footer-icons a {
+	display: inline-block;
+	margin-right: 15px;
+	font-size: 20px;
+}
+/* Footer */

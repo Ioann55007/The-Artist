@@ -1,59 +1,36 @@
 {% load static %}
 {% block content %}
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
-</head>
+<link rel="stylesheet" href="{% static 'css/picture.css' %}">
 <link rel="stylesheet" href="{% static 'css/base_css.css' %}">
-<style>
-* {
-    box-sizing: border-box;
-}
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
 
-body {
-    margin: 0;
-    font-family: Arial;
-    font-size: 17px;
-}
 
-.container {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    top:400px;
-}
-
-.container img {vertical-align: middle;}
-
-.container .content {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
-    color: #f1f1f1;
-    width: 100%;
-    padding: 20px;
-}
-</style>
 {% include 'header.html' %}
+<div style="text-align:center; min-height: 100vh;background:url({% static '/img/front-view-of-delivery-man-with-a-package.jpg' %})no-repeat;  background-size: 100%">
+<div style="position: relative">
+    <h1 style="text-align:center">Доставка</h1>
+
+
+
+    <h3 style="text-align:center">Прежде чем заказать ознакомьтесь с условиями покупки</h3>
+    <p style="text-align:center">Правила доставки и приобретения работ на сайте включают в себя следующие положения:</p>
+
+</div>
+<div style="position:absolute;right:37%; top:50%">
+        <p>Способ доставки - почта России и СДЭК</p>
+        <p>Предоплата 100 %</p>
+        <p>Форма оплаты - онлайн после связи</p>
+        <p>Доставка в стоимость картины не входит</p>
+</div>
+
+</div>
+
+
+
+
 
 <div>
-    <h1>Доставка</h1>
-</div>
-
-
-
-<div class="container">
-  <img src="notebook.jpg" alt="Notebook" style="width:100%;">
-  <div class="content">
-    <h1>Heading</h1>
-    <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei.</p>
-  </div>
-</div>
-
-
-
-
-<div style="margin-top:600px">
 
 {% include 'footer.html' %}
 </div>
