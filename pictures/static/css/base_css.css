@@ -58,8 +58,8 @@ display: inline
 position: relative;
 width:77%;
 height:65%;
-margin-top:9%;
 
+display:flex;
 }
 /*
 .first{
