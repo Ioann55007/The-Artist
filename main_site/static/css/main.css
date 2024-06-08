@@ -18,6 +18,7 @@ grid-template-columns: repeat(4, auto);
 .footer a {
 	text-decoration: none;
 	transition: all .3s;
+	list-style-type: none;
 }
 
 .footer a:hover {
@@ -31,6 +32,7 @@ grid-template-columns: repeat(4, auto);
 
 .footer li a {
 	display: block;
+
 }
 
 .footer-icons a {
@@ -39,3 +41,8 @@ grid-template-columns: repeat(4, auto);
 	font-size: 20px;
 }
 /* Footer */
+
+
+.footer__top-list{
+    list-style-type: none;
+}
